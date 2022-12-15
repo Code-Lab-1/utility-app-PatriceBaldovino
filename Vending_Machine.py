@@ -1,4 +1,8 @@
 
+
+
+
+
 def start():
 #Name of the Vending Machine
     print('''
@@ -39,7 +43,13 @@ def start():
 |############################################|
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////
  |________________________________|CR98|___|''')
-    
-    print("Welcome to the Moka Pot!")
+    print()
+    print('\t     Welcome to Moka Pot <3')
+    print('\t  A cafe in a vending machine!')
 
 start()
+
+def main():
+    drinks_available = [
+
+    ]
