@@ -108,10 +108,12 @@ def main():
         }
     ]
 
+    quit = False
     item = []
 
+
     print('''
-\n\t      ))                 ((
+\t      ))                 ((
 \t     |~~|  Drinks Menu  |~~|
 \t    C|__|               |__|]\n''')  
     print('-----------------------------------------------------')
@@ -120,4 +122,40 @@ def main():
         print()
     print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
 
+    print('''
+\t     C,                 C,
+\t    (~ )  Snacks Menu  (~ ) 
+\t    \~~/               \~~/
+\t     \/                 \/ \n''')  
+    print('-----------------------------------------------------')
+    for i in snacks_available:
+        print(f"Snack: {i['name']} - Price: {i['price']} - Code: {i['code']}")
+        print()
+    print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
+
+    items_bought = input("\nEnter the code of the item of your choice: ")
+    for i in drinks_available:
+        if items_bought == i['code']:
+            item = i
+
+    if item == []:
+        print('Code is Invalid')
+    else:
+        print(f"{item['name']} will codet you {item['price']} dirhams") 
+
+    price = int(input(f"Enter {item['price']} dirhams to purchase: "))
+    if price == item['price']:
+        print(f"Thank you for buying here is your {item['name']}")
+    else:
+        print(f"Please enter only {item['price']} dirhams")
+
+    items_bought = input("To quit the machine enter q and to continue buying enter anything: ")
+    if items_bought == 'q':
+        quit = False
+    else:
+        quit = True
+    print(':]')
+    
 main()
+
+
