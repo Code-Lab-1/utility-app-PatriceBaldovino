@@ -6,11 +6,11 @@ introduced over the course of the module.'''
 def start():
 #Name of the Vending Machine
     print('''
-                _             ___      _   
-    /\/\   ___ | | ____ _    / _ \___ | |_ 
-   /    \ / _ \| |/ / _` |  / /_)/ _ \| __|
-  / /\/\ \ (_) |   < (_| | / ___/ (_) | |_ 
-  \/    \/\___/|_|\_\__,_| \/    \___/ \__|''')
+    ___       __                   _ _       
+   / __\__ _ / _| ___  /\   /\___ (_) | __ _ 
+  / /  / _` | |_ / _ \ \ \ / / _ \| | |/ _` |
+ / /__| (_| |  _|  __/  \ V / (_) | | | (_| |
+ \____/\__,_|_|  \___|   \_/ \___/|_|_|\__,_|''')
 
 #Vending Machine Art
     print(''' ____________________________________________
@@ -44,118 +44,131 @@ def start():
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////
  |_________________________________________|''')
     print()
-    print('\t    Welcome to Moka Pot <3')
+    print('\t   Welcome to Cafe Voila <3')
     print('\t A cafe in a vending machine \n')
     print('Everything you can buy at a cafe is now in a machine!')
 
 start()
 
-def main():
 #A list of drinks that are available
-    drinks_available = [
-        {
-            'name':'Caffe Latte',
-            'price':20,
-            'code':'A1'
-        },
-        {
-            'name':'Frappe',
-            'price':23,
-            'code':'A2'
-        },
-        {
-            'name':'Cappuccino',
-            'price':20,
-            'code':'A3'
-        },
-        {
-            'name':'Double Espresso',
-            'price':23,
-            'code':'A4'
-        },
-        {
-            'name':'Macha Latte',
-            'price':15,
-            'code':'A5'
-        },
-        {
-            'name':'Strawberry & Cream',
-            'price':15,
-            'code':'A6'
-        }
-    ]
-#A list of snacks that are available
-    snacks_available = [
-        {
-            'name':'Breakfast Sandwich',
-            'price':15,
-            'code':'B1'
-        },
-        {
-            'name':'Croissant',
-            'price':9,
-            'code':'B2'
-        },
-        {
-            'name':'Macarons (4 pieces)',
-            'price':15,
-            'code':'B3'
-        },
-        {
-            'name':'Cupcake',
-            'price':7,
-            'code':'B4'
-        }
-    ]
+drinks_available = [
+    {
+        "item_id":0,
+        "name":"Caffe Latte",
+        'price':2,
+    },
+    {
+        "item_id": 1,
+        "name":"Frappe",
+        'price':23,
+    },
+    {
+        "item_id": 2,
+        "name":"Cappuccino",
+        'price':20,
+    },
+    {
+        "item_id": 3,
+        "name":"Double Espresso",
+        'price':23,
+    },
+    {
+        "item_id": 4,
+        "name":"Macha Latte",
+        'price':15,
+    },
+    {
+        "item_id": 5,
+        "name":"Strawberry & Cream",
+        'price':15,
+    },
+    {
+        "item_id": 6,
+        "name":"Breakfast Sandwich",
+        'price':15,
+    },
+    {
+        "item_id": 7,
+        "name":"Croissant",
+        'price':9,
+    },
+    {
+        "item_id": 8,
+        "name":"Macarons (4 pieces)",
+        'price':15,
+    },
+    {
+        "item_id": 9,
+        "name":"Cupcake",
+        'price':7,
+    }
+]
 
-    quit = False
-    item = []
+#Variables for the Vending machine
+items = []
+reciept = """
+\t\tPRODUCT -- PRICE
+"""
+sum = 0
+run = True
 
-
-    print('''
-\t      ))                 ((
-\t     |~~|  Drinks Menu  |~~|
-\t    C|__|               |__|]\n''')  
-    print('-----------------------------------------------------')
-    for i in drinks_available:
-        print(f"Drink: {i['name']} - Price: {i['price']} - Code: {i['code']}")
+#Printing of Drinks Menu
+print('''
+\t      ))                          ((
+\t     |~~|  Drinks & Snacks Menu  |~~|
+\t    C|__|                        |__|]\n''')  
+print('-----------------------------------------------------')
+for i in drinks_available:
+        print(f"Items: {i['name']} - Price: {i['price']} - Code: {i['item_id']}")
         print()
-    print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
+print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
 
-    print('''
-\t     C,                 C,
-\t    (~ )  Snacks Menu  (~ ) 
-\t    \~~/               \~~/
-\t     \/                 \/ \n''')  
-    print('-----------------------------------------------------')
-    for i in snacks_available:
-        print(f"Snack: {i['name']} - Price: {i['price']} - Code: {i['code']}")
-        print()
-    print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
+#Fuction used for adding drinks or snacks to the users items
+def machine(drinks_available, run, items):
+    while run:
+        #Enter the item code here
+        buy_item = int(input("\nEnter the item code of the product you want to buy: "))
 
-    items_bought = input("\nEnter the code of the item of your choice: ")
-    for i in drinks_available:
-        if items_bought == i['code']:
-            item = i
+        #
+        if buy_item < len(drinks_available,):
+            items.append(drinks_available[buy_item])
+        else:
+            print("THE PRODUCT ID IS WRONG!")
 
-    if item == []:
-        print('Code is Invalid')
-    else:
-        print(f"{item['name']} will codet you {item['price']} dirhams") 
+        more_items = str(input("Enter c to add more items or Enter x to quit: "))
 
-    price = int(input(f"Enter {item['price']} dirhams to purchase: "))
-    if price == item['price']:
-        print(f"Thank you for buying here is your {item['name']}")
-    else:
-        print(f"Please enter only {item['price']} dirhams")
-
-    items_bought = input("To quit the machine enter q and to continue buying enter anything: ")
-    if items_bought == 'q':
-        quit = False
-    else:
-        quit = True
-    print(':]')
+        if more_items == "x":
+            run = False
     
-main()
+    rec_bool = int(input(("1 - print the reciept 2 - only print the total sum .. ")))
+    if rec_bool == 1:
+        print(create_reciept(items, reciept))
+    elif rec_bool == 2:
+        print(sum(items))
+    else:
+        print("INVALID ENTRY")
 
+def sum(items):
+    sum = 0
 
+    for i in items:
+        sum += i["price"]
+
+    return sum
+
+def create_reciept(items, reciept):
+
+    for i in items:
+        reciept += f"""
+        \t{i["name"]} -- {i['price']}
+        """
+
+    reciept += f"""
+        \tTotal --- {sum(items)}
+        
+        
+        """
+    return reciept
+
+if __name__ == "__main__":
+    machine(drinks_available, run, items)
