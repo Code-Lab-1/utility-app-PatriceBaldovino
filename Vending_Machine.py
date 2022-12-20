@@ -107,7 +107,9 @@ drinks_available = [
 #Variables for the Vending machine
 items = []
 reciept = """
-\t\tPRODUCT -- PRICE
+-----------------------------------------------------\n
+\t******** RECEIPT *******\n
+\t  PRODUCT --> PRICE
 """
 sum = 0
 run = True
@@ -160,13 +162,11 @@ def create_reciept(items, reciept):
 
     for i in items:
         reciept += f"""
-        \t{i["name"]} -- {i['price']}
+            {i["name"]} --- {i['price']}
         """
 
     reciept += f"""
-        \tTotal --- {sum(items)}
-        
-        
+        Total ---- {sum(items)}
         """
     return reciept
 
