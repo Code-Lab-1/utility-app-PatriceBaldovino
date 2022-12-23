@@ -51,7 +51,7 @@ def start():
 start()
 
 #A list of drinks that are available
-drinks_available = [
+stock_available = [
     {
         "item_id":0,
         "name":"Caffe Latte",
@@ -120,20 +120,20 @@ print('''
 \t     |~~|  Drinks & Snacks Menu  |~~|
 \t    C|__|                        |__|]\n''')  
 print('-----------------------------------------------------')
-for i in drinks_available:
+for i in stock_available:
         print(f"Items: {i['name']} - Price: {i['price']} - Code: {i['item_id']}")
         print()
 print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
 
 #Fuction used for adding drinks or snacks to the users items
-def machine(drinks_available, run, items):
+def machine(stock_available, run, items):
     while run:
         #Enter the item code here
         buy_item = int(input("\nEnter the item code of the product you want to buy: "))
 
         #
-        if buy_item < len(drinks_available,):
-            items.append(drinks_available[buy_item])
+        if buy_item < len(stock_available):
+            items.append(stock_available[buy_item])
         else:
             print("THE PRODUCT ID IS WRONG!")
 
@@ -171,4 +171,4 @@ def create_reciept(items, reciept):
     return reciept
 
 if __name__ == "__main__":
-    machine(drinks_available, run, items)
+    machine(stock_available, run, items)
