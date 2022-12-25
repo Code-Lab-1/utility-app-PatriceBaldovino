@@ -156,29 +156,17 @@ def machine(stock_available, run, items):
         if buy_item < len(stock_available):
             items.append(stock_available[buy_item])
         else:
-            print("THE PRODUCT ID IS WRONG!")
+            print("THE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE")
 
         added_items = str(input("Enter c to add more items or Enter x to quit: "))
 
         if added_items == "x":
             run = False
     
-    record = int(input(("1 - print the reciept 2 - only print the total sum .. ")))
+    record = int(input(("To print receipt please enter")))
     if record == 1:
         print('-----------------------------------------------------')
         print(create_reciept(items, reciept))
-        print('-----------------------------------------------------')
-        print('''
-   ;)( ;                ___       _            _   _ 
-  :----:     o8Oo./    | __|_ _  (_)___ _  _  | | | |
- C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
-  |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
-  `----'   `------\'            |__/     |__/ \n''')
-
-    elif record == 2:
-        print('-----------------------------------------------------')
-        print(f'\nThe Total Price of your purchase: ')
-        print(sum(items))
         print('-----------------------------------------------------')
         print('''
    ;)( ;                ___       _            _   _ 
