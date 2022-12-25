@@ -48,6 +48,7 @@ def start():
     print('\t A cafe in a vending machine \n')
     print('Everything you can buy at a cafe is now in a machine!')
 
+    print("\tThe coffee can get a bit pricy :)")
 start()
 
 #A list of drinks that are available
@@ -55,7 +56,7 @@ stock_available = [
     {
         "item_id":0,
         "name":"Caffe Latte",
-        'price':2,
+        'price':20,
     },
     {
         "item_id": 1,
@@ -114,41 +115,17 @@ reciept = """
 sum = 0
 run = True
 
-#Printing of Drinks Menu
+#Printing of Drinks Menu title
 print('''
-\t      ))                          ((
-\t     |~~|  Drinks & Snacks Menu  |~~|
-\t    C|__|                        |__|]\n''')  
+\t  ))                          ((
+\t |~~|  Drinks & Snacks Menu  |~~|
+\tC|__|                        |__|]\n''')  
 print('-----------------------------------------------------')
+#Printing of Menu using a for loop
 for i in stock_available:
-        print(f"Items: {i['name']} - Price: {i['price']} - Code: {i['item_id']}")
+        print(f"Items: {i['name']} - Price: {i['price']} ----- Code: {i['item_id']}")
         print()
 print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
-
-#Fuction used for adding drinks or snacks to the users items
-def machine(stock_available, run, items):
-    while run:
-        #Enter the item code here
-        buy_item = int(input("\nEnter the item code of the product you want to buy: "))
-
-        #
-        if buy_item < len(stock_available):
-            items.append(stock_available[buy_item])
-        else:
-            print("THE PRODUCT ID IS WRONG!")
-
-        more_items = str(input("Enter c to add more items or Enter x to quit: "))
-
-        if more_items == "x":
-            run = False
-    
-    rec_bool = int(input(("1 - print the reciept 2 - only print the total sum .. ")))
-    if rec_bool == 1:
-        print(create_reciept(items, reciept))
-    elif rec_bool == 2:
-        print(sum(items))
-    else:
-        print("INVALID ENTRY")
 
 def sum(items):
     sum = 0
@@ -169,6 +146,50 @@ def create_reciept(items, reciept):
         Total ---- {sum(items)}
         """
     return reciept
+#Fuction used for adding drinks or snacks to the users items
+def machine(stock_available, run, items):
+    while run:
+        #Enter the item code here
+        buy_item = int(input("\nEnter the item code of the product you want to buy: "))
+
+        #
+        if buy_item < len(stock_available):
+            items.append(stock_available[buy_item])
+        else:
+            print("THE PRODUCT ID IS WRONG!")
+
+        added_items = str(input("Enter c to add more items or Enter x to quit: "))
+
+        if added_items == "x":
+            run = False
+    
+    record = int(input(("1 - print the reciept 2 - only print the total sum .. ")))
+    if record == 1:
+        print('-----------------------------------------------------')
+        print(create_reciept(items, reciept))
+        print('-----------------------------------------------------')
+        print('''
+   ;)( ;                ___       _            _   _ 
+  :----:     o8Oo./    | __|_ _  (_)___ _  _  | | | |
+ C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
+  |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
+  `----'   `------\'            |__/     |__/ \n''')
+
+    elif record == 2:
+        print('-----------------------------------------------------')
+        print(f'\nThe Total Price of your purchase: ')
+        print(sum(items))
+        print('-----------------------------------------------------')
+        print('''
+   ;)( ;                ___       _            _   _ 
+  :----:     o8Oo./    | __|_ _  (_)___ _  _  | | | |
+ C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
+  |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
+  `----'   `------\'            |__/     |__/ \n''')
+
+    else:
+        print("     INVALID ENTRY")
+        print('Please follow instructions')
 
 if __name__ == "__main__":
     machine(stock_available, run, items)
