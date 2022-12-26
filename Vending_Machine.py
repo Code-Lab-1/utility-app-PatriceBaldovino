@@ -136,11 +136,12 @@ def create_reciept(items, reciept):
         """
     return reciept
 
-#Printing of Drinks Menu title
+#Printing of Menu Title
 print('''
 \t  ))                          ((
 \t |~~|  Drinks & Snacks Menu  |~~|
 \tC|__|                        |__|]\n''')  
+
 print('-----------------------------------------------------')
 #Printing of Menu using a for loop
 for i in items_available:
