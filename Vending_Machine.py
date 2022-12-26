@@ -44,6 +44,7 @@ def start():
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////
  |_________________________________________|''')
     print()
+    #Introduction to Vending machine
     print('\t   Welcome to Cafe Voila <3')
     print('\t A cafe in a vending machine \n')
     print('Everything you can buy at a cafe is now in a machine!')
@@ -152,19 +153,18 @@ def machine(items_available, run, items):
     while run:
         #Enter the item code here
         buy_item = int(input("\nYou may enter the product code of your choice: "))
-
-        #
         if buy_item < len(items_available):
             items.append(items_available[buy_item])
         else:
             print("\n\tTHE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE")
-
+        #If user wants to add more or end it
         added_items = str(input("Enter c to add more items or Enter x to quit: "))
-
+        #If user enters x you will get your receipt
         if added_items == "x":
             run = False
-    
+    #For printing of receipt and total price of your purchase
     record = int(input(("To print receipt please enter the number 1: ")))
+    #Will print receipt and enjoy card
     if record == 1:
         print('-----------------------------------------------------')
         print(create_reciept(items, reciept))
@@ -175,7 +175,7 @@ def machine(items_available, run, items):
  C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
   |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
   `----'   `------\'            |__/     |__/ \n''')
-
+    #If 1 is not entered it will be invalid
     else:
         print("\n\t     INVALID ENTRY")
         print('\tPlease follow instructions!')
