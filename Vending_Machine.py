@@ -51,55 +51,55 @@ def start():
     print("\tThe coffee can get a bit pricy :)")
 start()
 
-#A list of drinks that are available
-stock_available = [
+#A list of items that are available
+items_available = [
     {
-        "item_id":0,
+        "code":0,
         "name":"Caffe Latte",
         'price':20,
     },
     {
-        "item_id": 1,
+        "code": 1,
         "name":"Frappe",
         'price':23,
     },
     {
-        "item_id": 2,
+        "code": 2,
         "name":"Cappuccino",
         'price':20,
     },
     {
-        "item_id": 3,
+        "code": 3,
         "name":"Double Espresso",
         'price':23,
     },
     {
-        "item_id": 4,
+        "code": 4,
         "name":"Macha Latte",
         'price':15,
     },
     {
-        "item_id": 5,
+        "code": 5,
         "name":"Strawberry & Cream",
         'price':15,
     },
     {
-        "item_id": 6,
+        "code": 6,
         "name":"Breakfast Sandwich",
         'price':15,
     },
     {
-        "item_id": 7,
+        "code": 7,
         "name":"Croissant",
         'price':9,
     },
     {
-        "item_id": 8,
+        "code": 8,
         "name":"Macarons (4 pieces)",
         'price':15,
     },
     {
-        "item_id": 9,
+        "code": 9,
         "name":"Cupcake",
         'price':7,
     }
@@ -112,29 +112,17 @@ reciept = """
 \t******** RECEIPT *******\n
 \t  PRODUCT --> PRICE
 """
-sum = 0
+total = 0
 run = True
-
-#Printing of Drinks Menu title
-print('''
-\t  ))                          ((
-\t |~~|  Drinks & Snacks Menu  |~~|
-\tC|__|                        |__|]\n''')  
-print('-----------------------------------------------------')
-#Printing of Menu using a for loop
-for i in stock_available:
-        print(f"Items: {i['name']} - Price: {i['price']} ----- Code: {i['item_id']}")
-        print()
-print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
-
-def sum(items):
-    sum = 0
+#For adding all the prices together
+def total(items):
+    total = 0
 
     for i in items:
-        sum += i["price"]
+        total += i["price"]
 
-    return sum
-
+    return total
+#For printing of receipt
 def create_reciept(items, reciept):
 
     for i in items:
@@ -143,27 +131,40 @@ def create_reciept(items, reciept):
         """
 
     reciept += f"""
-        Total ---- {sum(items)}
+        Total ---- {total(items)}
         """
     return reciept
+
+#Printing of Drinks Menu title
+print('''
+\t  ))                          ((
+\t |~~|  Drinks & Snacks Menu  |~~|
+\tC|__|                        |__|]\n''')  
+print('-----------------------------------------------------')
+#Printing of Menu using a for loop
+for i in items_available:
+        print(f"Items: {i['name']} - Price: {i['price']} ====== Code: {i['code']}")
+        print()
+print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
+
 #Fuction used for adding drinks or snacks to the users items
-def machine(stock_available, run, items):
+def machine(items_available, run, items):
     while run:
         #Enter the item code here
-        buy_item = int(input("\nEnter the item code of the product you want to buy: "))
+        buy_item = int(input("\nYou may enter the product code of your choice: "))
 
         #
-        if buy_item < len(stock_available):
-            items.append(stock_available[buy_item])
+        if buy_item < len(items_available):
+            items.append(items_available[buy_item])
         else:
-            print("THE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE")
+            print("\n\tTHE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE")
 
         added_items = str(input("Enter c to add more items or Enter x to quit: "))
 
         if added_items == "x":
             run = False
     
-    record = int(input(("To print receipt please enter")))
+    record = int(input(("To print receipt please enter the number 1: ")))
     if record == 1:
         print('-----------------------------------------------------')
         print(create_reciept(items, reciept))
@@ -176,8 +177,8 @@ def machine(stock_available, run, items):
   `----'   `------\'            |__/     |__/ \n''')
 
     else:
-        print("     INVALID ENTRY")
-        print('Please follow instructions')
+        print("\n\t     INVALID ENTRY")
+        print('\tPlease follow instructions!')
 
 if __name__ == "__main__":
-    machine(stock_available, run, items)
+    machine(items_available, run, items)
