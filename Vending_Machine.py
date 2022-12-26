@@ -180,6 +180,6 @@ def machine(items_available, run, items):
     else:
         print("\n\t     INVALID ENTRY")
         print('\tPlease follow instructions!')
-
+#Main for function call
 if __name__ == "__main__":
     machine(items_available, run, items)
