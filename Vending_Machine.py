@@ -48,67 +48,67 @@ def start():
     print('\t   Welcome to Cafe Voila <3')
     print('\t A cafe in a vending machine \n')
     print('Everything you can buy at a cafe is now in a machine!')
-
+    #No specific currency ex. dollars
     print("\tThe coffee can get a bit pricy :)")
 start()
 
 #A list of items that are available
 items_available = [
     {
-        "code":0,
+        "code":00,
         "name":"Caffe Latte",
         'price':20,
     },
     {
-        "code": 1,
+        "code": 01,
         "name":"Frappe",
         'price':23,
     },
     {
-        "code": 2,
+        "code": 02,
         "name":"Cappuccino",
         'price':20,
     },
     {
-        "code": 3,
+        "code": 03,
         "name":"Double Espresso",
         'price':23,
     },
     {
-        "code": 4,
+        "code": 04,
         "name":"Macha Latte",
         'price':15,
     },
     {
-        "code": 5,
+        "code": 05,
         "name":"Strawberry & Cream",
         'price':15,
     },
     {
-        "code": 6,
+        "code": 06,
         "name":"Breakfast Sandwich",
         'price':15,
     },
     {
-        "code": 7,
+        "code": 07,
         "name":"Croissant",
         'price':9,
     },
     {
-        "code": 8,
+        "code": 08,
         "name":"Macarons (4 pieces)",
-        'price':15,
+        'price':10,
     },
     {
-        "code": 9,
+        "code": 09,
         "name":"Cupcake",
         'price':7,
     }
 ]
 
-#Variables for the Vending machine
+#For machine, total, create_receipt 
 items = []
-reciept = """
+receipt = """
 -----------------------------------------------------\n
 \t******** RECEIPT *******\n
 \t  PRODUCT --> PRICE
@@ -124,17 +124,17 @@ def total(items):
 
     return total
 #For printing of receipt
-def create_reciept(items, reciept):
-
+def create_receipt(items, receipt):
+   #For receipt
     for i in items:
-        reciept += f"""
+        receipt += f"""
             {i["name"]} --- {i['price']}
         """
-
-    reciept += f"""
-        Total ---- {total(items)}
+   #For total receipt
+    receipt += f"""
+        Total ==== {total(items)}
         """
-    return reciept
+    return receipt
 
 #Printing of Menu Title
 print('''
@@ -163,23 +163,54 @@ def machine(items_available, run, items):
         #If user enters x you will get your receipt
         if added_items == "x":
             run = False
-    #For printing of receipt and total price of your purchase
-    record = int(input(("To print receipt please enter the number 1: ")))
-    #Will print receipt and enjoy card
-    if record == 1:
+   #to show total price to the user
+    print('-----------------------------------------------------')
+    print(f'The total price is {total(items)}')
+
+   #Input total price or more here
+    cash = int(input(("Please enter the amount of money needed:")))
+   #For cash change
+    change = int(cash) - int(total(items))
+   #If the user gives the exact amount needed it will print this
+    if cash == total(items):
         print('-----------------------------------------------------')
-        print(create_reciept(items, reciept))
-        print('-----------------------------------------------------')
+        print('All of the items that you have pruchased will be dispensed.')
+        print(f'Here is your change: {change}')
         print('''
    ;)( ;                ___       _            _   _ 
   :----:     o8Oo./    | __|_ _  (_)___ _  _  | | | |
  C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
   |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
   `----'   `------\'            |__/     |__/ \n''')
+  #If the user gives more than the exact amount needed it will print this
+    elif cash >= total(items):
+        print('-----------------------------------------------------')
+        print('All of the items that you have pruchased will be dispensed.')
+        print(f'Here is your change: {change}')
+        print('''
+   ;)( ;                ___       _            _   _ 
+  :----:     o8Oo./    | __|_ _  (_)___ _  _  | | | |
+ C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
+  |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
+  `----'   `------\'            |__/     |__/ \n''')
+  #If the user gives less than the right amount 
+    else:
+        print('Please enter the right amount of money')
+
+    #For printing of receipt and total price of your purchase
+    record = int(input(("To print receipt please enter the number 1: ")))
+    #Will print receipt and enjoy card
+    if record == 1:
+        print('-----------------------------------------------------')
+        print(create_receipt(items, receipt))
+        print(f'        Change ---- {change}')
+        print('\n\t******** THANK YOU *******')
+        print('-----------------------------------------------------')
     #If 1 is not entered it will be invalid
     else:
         print("\n\t     INVALID ENTRY")
         print('\tPlease follow instructions!')
+
 #Main for function call
 if __name__ == "__main__":
     machine(items_available, run, items)
