@@ -155,8 +155,10 @@ def machine(items_available, run, items):
         buy_item = int(input("\nYou may enter the product code of your choice: "))
         if buy_item < len(items_available):
             items.append(items_available[buy_item])
+            print('Okay, {} sounds perfect! That will be added to your bill.'.format(items_available[buy_item]['name']))
         else:
             print("\n\tTHE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE")
+            again = int(input('\nYou may enter the product code of your choice: '))
        #If user wants to add more or end it
         added_items = str(input("Enter c to add more items or Enter x to quit: "))
        #If user enters x you will get your receipt
