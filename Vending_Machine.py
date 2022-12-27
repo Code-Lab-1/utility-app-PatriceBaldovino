@@ -106,6 +106,17 @@ items_available = [
     }
 ]
 
+#Printing Variables
+menu = '''
+\t  ))                          ((
+\t |~~|  Drinks & Snacks Menu  |~~|
+\tC|__|                        |__|]\n'''
+thankyou = '''
+   ;)( ;                ___       _            _   _ 
+  :----:     o8Oo./    | __|_ _  (_)___ _  _  | | | |
+ C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
+  |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
+  `----'   `------\'            |__/     |__/ \n'''
 #For machine, total, create_receipt 
 items = []
 receipt = """
@@ -136,11 +147,7 @@ def create_receipt(items, receipt):
     return receipt
 
 #Printing of Menu Title
-print('''
-\t  ))                          ((
-\t |~~|  Drinks & Snacks Menu  |~~|
-\tC|__|                        |__|]\n''')  
-
+print(menu)  
 print('-----------------------------------------------------')
 #Printing of Menu using a for loop
 for i in items_available:
@@ -177,23 +184,13 @@ def machine(items_available, run, items):
         print('-----------------------------------------------------')
         print('All of the items that you have pruchased will be dispensed.')
         print(f'Here is your change: {change}')
-        print('''
-   ;)( ;                ___       _            _   _ 
-  :----:     o8Oo./    | __|_ _  (_)___ _  _  | | | |
- C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
-  |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
-  `----'   `------\'            |__/     |__/ \n''')
+        print(thankyou)
   #If the user gives more than the exact amount needed it will print this
     elif cash >= total(items):
         print('-----------------------------------------------------')
         print('All of the items that you have pruchased will be dispensed.')
         print(f'Here is your change: {change}')
-        print('''
-   ;)( ;                ___       _            _   _ 
-  :----:     o8Oo./    | __|_ _  (_)___ _  _  | | | |
- C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
-  |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
-  `----'   `------\'            |__/     |__/ \n''')
+        print(thankyou)
   #If the user gives less than the right amount 
     else:
         print('Please enter the right amount of money')
