@@ -132,8 +132,7 @@ def create_receipt(items, receipt):
         """
    #For total receipt
     receipt += f"""
-        Total ==== {total(items)}
-        """
+          Total ==== {total(items)} """
     return receipt
 
 #Printing of Menu Title
@@ -203,7 +202,8 @@ def machine(items_available, run, items):
     if record == 1:
         print('-----------------------------------------------------')
         print(create_receipt(items, receipt))
-        print(f'        Change ---- {change}')
+        print(f'         Cash ---- {cash}')
+        print(f'         Change ---- {change}')
         print('\n\t******** THANK YOU *******\n')
         print('-----------------------------------------------------')
     #If 1 is not entered it will be invalid
