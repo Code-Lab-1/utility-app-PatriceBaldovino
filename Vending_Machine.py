@@ -44,63 +44,63 @@ def start():
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////
  |_________________________________________|''')
     print()
-    #Introduction to Vending machine
+   #Introduction to Vending machine
     print('\t   Welcome to Cafe Voila <3')
     print('\t A cafe in a vending machine \n')
     print('Everything you can buy at a cafe is now in a machine!')
-    #No specific currency ex. dollars
+   #No specific currency ex. dollars
     print("\tThe coffee can get a bit pricy :)")
 start()
 
 #A list of items that are available
 items_available = [
     {
-        "code":00,
+        "code":0,
         "name":"Caffe Latte",
         'price':20,
     },
     {
-        "code": 01,
+        "code": 1,
         "name":"Frappe",
         'price':23,
     },
     {
-        "code": 02,
+        "code": 2,
         "name":"Cappuccino",
         'price':20,
     },
     {
-        "code": 03,
+        "code": 3,
         "name":"Double Espresso",
         'price':23,
     },
     {
-        "code": 04,
+        "code": 4,
         "name":"Macha Latte",
         'price':15,
     },
     {
-        "code": 05,
+        "code": 5,
         "name":"Strawberry & Cream",
         'price':15,
     },
     {
-        "code": 06,
+        "code": 6,
         "name":"Breakfast Sandwich",
         'price':15,
     },
     {
-        "code": 07,
+        "code": 7,
         "name":"Croissant",
         'price':9,
     },
     {
-        "code": 08,
+        "code": 8,
         "name":"Macarons (4 pieces)",
         'price':10,
     },
     {
-        "code": 09,
+        "code": 9,
         "name":"Cupcake",
         'price':7,
     }
@@ -152,15 +152,15 @@ print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾�
 #Fuction used for adding drinks or snacks to the users items
 def machine(items_available, run, items):
     while run:
-        #Enter the item code here
+       #Enter the item code here
         buy_item = int(input("\nYou may enter the product code of your choice: "))
         if buy_item < len(items_available):
             items.append(items_available[buy_item])
         else:
             print("\n\tTHE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE")
-        #If user wants to add more or end it
+       #If user wants to add more or end it
         added_items = str(input("Enter c to add more items or Enter x to quit: "))
-        #If user enters x you will get your receipt
+       #If user enters x you will get your receipt
         if added_items == "x":
             run = False
    #to show total price to the user
@@ -197,14 +197,14 @@ def machine(items_available, run, items):
     else:
         print('Please enter the right amount of money')
 
-    #For printing of receipt and total price of your purchase
+   #For printing of receipt and total price of your purchase
     record = int(input(("To print receipt please enter the number 1: ")))
-    #Will print receipt and enjoy card
+   #Will print receipt and enjoy card
     if record == 1:
         print('-----------------------------------------------------')
         print(create_receipt(items, receipt))
         print(f'        Change ---- {change}')
-        print('\n\t******** THANK YOU *******')
+        print('\n\t******** THANK YOU *******\n')
         print('-----------------------------------------------------')
     #If 1 is not entered it will be invalid
     else:
