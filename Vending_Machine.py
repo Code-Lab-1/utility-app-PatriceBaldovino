@@ -96,7 +96,7 @@ items_available = [
     },
     {
         "code": 8,
-        "name":"Macarons (4 pieces)",
+        "name":"Macarons",
         'price':10,
     },
     {
@@ -106,7 +106,7 @@ items_available = [
     }
 ]
 
-#Printing Variables
+#Printing  art
 menu = '''
 \t  ))                          ((
 \t |~~|  Drinks & Snacks Menu  |~~|
