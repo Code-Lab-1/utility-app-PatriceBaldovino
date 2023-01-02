@@ -60,11 +60,11 @@ items_available = [
     {"code": 6, "name":"Breakfast Sandwich", 'price':15,}, {"code": 7, "name":"Croissant", 'price':9,}, 
     {"code": 8, "name":"Macarons", 'price':10,}, {"code": 9, "name":"Cupcake", 'price':7,} ]
 
-#Printing  art
+#Printing art & text
 menu = '''
 \t  ))                          ((
 \t |~~|  Drinks & Snacks Menu  |~~|
-\tC|__|                        |__|]\n'''
+\tC|__|                        |__|]\n\n'''
 
 thankyou = '''
    ;)( ;                ___       _            _   _ 
@@ -72,10 +72,24 @@ thankyou = '''
  C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
   |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
   `----'   `------\'            |__/     |__/ \n'''
+code = '''  ___                _      ___         _     
+ |_ _|_ _  _ __ _  _| |_   / __|___  __| |___ 
+  | || ' \| '_ \ || |  _| | (__/ _ \/ _` / -_)
+ |___|_||_| .__/\_,_|\__|  \___\___/\__,_\___|
+          |_|                                 '''
+payment = '''  ___                         _   
+ | _ \__ _ _  _ _ __  ___ _ _| |_ 
+ |  _/ _` | || | '  \/ -_) ' \  _|
+ |_| \__,_|\_, |_|_|_\___|_||_\__|
+           |__/                   \n'''
+itemst = '''  ___ _                
+ |_ _| |_ ___ _ __  ___
+  | ||  _/ -_) '  \(_-<
+ |___|\__\___|_|_|_/__/
+                       \n'''
 #For machine, total, create_receipt 
 items = []
 receipt = """
------------------------------------------------------\n
 \t******** RECEIPT *******\n
 \t  PRODUCT --> PRICE
 """
@@ -102,8 +116,8 @@ def create_receipt(items, receipt):
     return receipt
 
 #Printing of Menu Title
-print(menu)  
 print('-----------------------------------------------------')
+print(menu)  
 #Printing of Menu using a for loop
 for i in items_available:
         print(f"[{i['code']}] Items: {i['name']} - Price: {i['price']}")
@@ -111,6 +125,7 @@ for i in items_available:
         print()
 print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
 
+print(code)
 #Fuction used for adding drinks or snacks to the users items
 def machine(items_available, run, items):
     while run:
@@ -129,6 +144,7 @@ def machine(items_available, run, items):
 
    #to show total price to the user
     print('-----------------------------------------------------')
+    print(payment)
     print(f'The total price is {total(items)}')
 
    #Input total price or more here
@@ -138,11 +154,13 @@ def machine(items_available, run, items):
    #If the user gives the exact amount needed it will print this
     if cash == total(items):
         print('-----------------------------------------------------')
+        print(itemst)
         print('All of the items that you have pruchased will be dispensed.')
         print(thankyou)
   #If the user gives more than the exact amount needed it will print this
     elif cash >= total(items):
         print('-----------------------------------------------------')
+        print(itemst)
         print('All of the items that you have pruchased will be dispensed.')
         print(f'Here is your change: {change}')
         print(thankyou)
@@ -153,9 +171,9 @@ def machine(items_available, run, items):
         
 
    #For printing of receipt and total price of your purchase
-    record = int(input(("To print receipt please enter the number 1: ")))
+    record = str(input(("To print the receipt please enter a: ")))
    #Will print receipt and enjoy card
-    if record == 1:
+    if record == 'a':
         print('-----------------------------------------------------')
         print(create_receipt(items, receipt))
         print(f'         Cash ---- {cash}')
