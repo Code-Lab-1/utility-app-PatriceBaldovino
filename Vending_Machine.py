@@ -41,9 +41,11 @@ vending_machine = ''' ____________________________________________
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////
  |_________________________________________|'''
 menu = '''
+
 \t  ))                          ((
 \t |~~|  Drinks & Snacks Menu  |~~|
 \tC|__|                        |__|]\n\n'''
+dash1 = '''-----------------------------------------------------'''
 
 thankyou = '''
    ;)( ;                ___       _            _   _ 
@@ -56,18 +58,20 @@ code = '''  ___                _      ___         _
   | || ' \| '_ \ || |  _| | (__/ _ \/ _` / -_)
  |___|_||_| .__/\_,_|\__|  \___\___/\__,_\___|
           |_|                                 '''
-payment = '''  ___                         _   
+payment = '''
+  ___                         _   
  | _ \__ _ _  _ _ __  ___ _ _| |_ 
  |  _/ _` | || | '  \/ -_) ' \  _|
  |_| \__,_|\_, |_|_|_\___|_||_\__|
            |__/                   \n'''
-itemst = '''  ___ _                
+itemst = '''
+  ___ _                
  |_ _| |_ ___ _ __  ___
   | ||  _/ -_) '  \(_-<
  |___|\__\___|_|_|_/__/
                        \n'''
 
-#A list of items that are available
+#The list of items that are available [Dictionary]
 items_available = [
     { "code":0, "name":"Caffe Latte", 'price':20,}, {"code": 1, "name":"Frappe", 'price':23,}, 
     {"code": 2, "name":"Cappuccino", 'price':20,}, {"code": 3, "name":"Double Espresso",'price':23,}, 
@@ -75,7 +79,7 @@ items_available = [
     {"code": 6, "name":"Breakfast Sandwich", 'price':15,}, {"code": 7, "name":"Croissant", 'price':9,}, 
     {"code": 8, "name":"Macarons", 'price':10,}, {"code": 9, "name":"Cupcake", 'price':7,} ]
 
-#For machine, total, create_receipt 
+#For machine, total, create_receipt functions
 items = []
 receipt = """
 \t******** RECEIPT *******\n
@@ -119,8 +123,8 @@ def start():
     print("\tThe coffee can get a bit pricy :)")
 start()
 #Printing of Menu Title
-print('-----------------------------------------------------')
-print(menu)  
+print(dash1 + menu)
+#print(menu)  
 #Printing of Menu using a for loop
 for i in items_available:
         print(f"[{i['code']}] Items: {i['name']} - Price: {i['price']}")
@@ -144,8 +148,8 @@ def machine(items_available, run, items):
         if added_items == "x":
             run = False   
    #to show total price to the user
-    print('-----------------------------------------------------')
-    print(payment)
+    print(dash1 + payment)
+    #print(payment)
     print(f'The total price is {total(items)}')
    #Input total price or more here
     cash = int(input(("Please enter the amount of money needed: ")))
@@ -153,14 +157,14 @@ def machine(items_available, run, items):
     change = int(cash) - int(total(items))
    #If the user gives the exact amount needed it will print this
     if cash == total(items):
-        print('-----------------------------------------------------')
-        print(itemst)
+        print(dash1 + itemst)
+        #print(itemst)
         print('All of the items that you have pruchased will be dispensed.')
         print(thankyou)
   #If the user gives more than the exact amount needed it will print this
     elif cash >= total(items):
-        print('-----------------------------------------------------')
-        print(itemst)
+        print(dash1 + itemst)
+        #print(itemst)
         print('All of the items that you have pruchased will be dispensed.')
         print(f'Here is your change: {change}')
         print(thankyou)
@@ -172,12 +176,12 @@ def machine(items_available, run, items):
     record = str(input(("To print the receipt please enter a: ")))
    #Will print receipt and enjoy card
     if record == 'a':
-        print('-----------------------------------------------------')
+        print(dash1)
         print(create_receipt(items, receipt))
         print(f'         Cash ---- {cash}')
         print(f'         Change ---- {change}')
-        print('\n\t******** THANK YOU *******\n')
-        print('-----------------------------------------------------')
+        print('\n\t******** THANK YOU *******\n' + dash1)
+        #print(dash1)
     #If 1 is not entered it will be invalid
     else:
         print("\n\t     INVALID ENTRY")
