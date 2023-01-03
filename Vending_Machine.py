@@ -3,17 +3,14 @@
 The program should demonstrate your knowledge of programming and make use of the techniques 
 introduced over the course of the module.'''
 
-def start():
-#Name of the Vending Machine
-    print('''
+#Printing art & text
+title = '''
     ___       __                   _ _       
    / __\__ _ / _| ___  /\   /\___ (_) | __ _ 
   / /  / _` | |_ / _ \ \ \ / / _ \| | |/ _` |
  / /__| (_| |  _|  __/  \ V / (_) | | | (_| |
- \____/\__,_|_|  \___|   \_/ \___/|_|_|\__,_|''')
-
-#Vending Machine Art
-    print(''' ____________________________________________
+ \____/\__,_|_|  \___|   \_/ \___/|_|_|\__,_|'''
+vending_machine = ''' ____________________________________________
 |############################################|
 |#|                           |##############|
 |#|  =====  ..--''`  |~~``|   |##|````````|##|
@@ -42,17 +39,7 @@ def start():
 |#|__________|PUSH|___________|####|\|||/|###|
 |############################################|
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////
- |_________________________________________|''')
-    print()
-   #Introduction to Vending machine
-    print('\t   Welcome to Cafe Voila <3')
-    print('\t A cafe in a vending machine \n')
-    print('Everything you can buy at a cafe is now in a machine!')
-   #No specific currency ex. dollars
-    print("\tThe coffee can get a bit pricy :)")
-start()
-
-#Printing art & text
+ |_________________________________________|'''
 menu = '''
 \t  ))                          ((
 \t |~~|  Drinks & Snacks Menu  |~~|
@@ -117,6 +104,20 @@ def create_receipt(items, receipt):
           Total ==== {total(items)} """
     return receipt
 
+#THE START OF THE MAIN CODE
+def start():
+#Name of the Vending Machine
+    print(title)
+#Vending Machine Art
+    print(vending_machine)
+    print()
+   #Introduction to Vending machine
+    print('\t   Welcome to Cafe Voila <3')
+    print('\t A cafe in a vending machine \n')
+    print('Everything you can buy at a cafe is now in a machine!')
+   #No specific currency ex. dollars
+    print("\tThe coffee can get a bit pricy :)")
+start()
 #Printing of Menu Title
 print('-----------------------------------------------------')
 print(menu)  
