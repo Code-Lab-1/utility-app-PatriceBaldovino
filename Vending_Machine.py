@@ -52,14 +52,6 @@ def start():
     print("\tThe coffee can get a bit pricy :)")
 start()
 
-#A list of items that are available
-items_available = [
-    { "code":0, "name":"Caffe Latte", 'price':20,}, {"code": 1, "name":"Frappe", 'price':23,}, 
-    {"code": 2, "name":"Cappuccino", 'price':20,}, {"code": 3, "name":"Double Espresso",'price':23,}, 
-    {"code": 4, "name":"Macha Latte", 'price':15,}, {"code": 5, "name":"Strawberry & Cream",'price':15,}, 
-    {"code": 6, "name":"Breakfast Sandwich", 'price':15,}, {"code": 7, "name":"Croissant", 'price':9,}, 
-    {"code": 8, "name":"Macarons", 'price':10,}, {"code": 9, "name":"Cupcake", 'price':7,} ]
-
 #Printing art & text
 menu = '''
 \t  ))                          ((
@@ -87,6 +79,15 @@ itemst = '''  ___ _
   | ||  _/ -_) '  \(_-<
  |___|\__\___|_|_|_/__/
                        \n'''
+
+#A list of items that are available
+items_available = [
+    { "code":0, "name":"Caffe Latte", 'price':20,}, {"code": 1, "name":"Frappe", 'price':23,}, 
+    {"code": 2, "name":"Cappuccino", 'price':20,}, {"code": 3, "name":"Double Espresso",'price':23,}, 
+    {"code": 4, "name":"Macha Latte", 'price':15,}, {"code": 5, "name":"Strawberry & Cream",'price':15,}, 
+    {"code": 6, "name":"Breakfast Sandwich", 'price':15,}, {"code": 7, "name":"Croissant", 'price':9,}, 
+    {"code": 8, "name":"Macarons", 'price':10,}, {"code": 9, "name":"Cupcake", 'price':7,} ]
+
 #For machine, total, create_receipt 
 items = []
 receipt = """
@@ -95,6 +96,7 @@ receipt = """
 """
 total = 0
 run = True
+
 #For adding all the prices together
 def total(items):
     total = 0
@@ -124,9 +126,8 @@ for i in items_available:
         #print(f"Items: {i['name']} - Price: {i['price']} ====== Code: {i['code']}")
         print()
 print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
-
 print(code)
-#Fuction used for adding drinks or snacks to the users items
+#Fuction used for adding drinks or snacks to the users items. USing while loop 
 def machine(items_available, run, items):
     while run:
        #Enter the item code here
@@ -135,20 +136,18 @@ def machine(items_available, run, items):
             items.append(items_available[buy_item])
             print('Okay, {} sounds perfect! That will be added to your bill.'.format(items_available[buy_item]['name']))
         else:
-            print("\n\tTHE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE")
+            print("\nTHE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE\n")
        #If user wants to add more or end it
         added_items = str(input("Enter c to add more items or Enter x to quit: "))
-       #If user enters x you will get your receipt
+       #If user enters x you will got to the next part
         if added_items == "x":
-            run = False
-
+            run = False   
    #to show total price to the user
     print('-----------------------------------------------------')
     print(payment)
     print(f'The total price is {total(items)}')
-
    #Input total price or more here
-    cash = int(input(("Please enter the amount of money needed:")))
+    cash = int(input(("Please enter the amount of money needed: ")))
    #For cash change
     change = int(cash) - int(total(items))
    #If the user gives the exact amount needed it will print this
@@ -168,8 +167,6 @@ def machine(items_available, run, items):
     else:
         print('Please enter the right amount of money')
         return
-        
-
    #For printing of receipt and total price of your purchase
     record = str(input(("To print the receipt please enter a: ")))
    #Will print receipt and enjoy card
@@ -185,6 +182,6 @@ def machine(items_available, run, items):
         print("\n\t     INVALID ENTRY")
         print('\tPlease follow instructions!')
 
-#Main for function call
+#Main for function call. It Executes Code When the File Runs as a Script.
 if __name__ == "__main__":
     machine(items_available, run, items)
