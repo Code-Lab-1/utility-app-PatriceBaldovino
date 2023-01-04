@@ -2,7 +2,7 @@
 '''Your task is to create a Vending Machine program using the Python programming language. 
 The program should demonstrate your knowledge of programming and make use of the techniques 
 introduced over the course of the module.'''
-
+import random
 #Printing art & text
 title = '''
     ___       __                   _ _       
@@ -79,6 +79,10 @@ items_available = [
     {"code": 6, "name":"Breakfast Sandwich", 'price':15,}, {"code": 7, "name":"Croissant", 'price':9,}, 
     {"code": 8, "name":"Macarons", 'price':10,}, {"code": 9, "name":"Cupcake", 'price':7,} ]
 
+sug_items = [
+    {"code":10, "name":"Waffle meal", 'price':10},{"code":11, "name":"Biscuit", 'price':6},{"code":12, "name":"Sweet Bread", 'price':5},
+    {"code":13, "name":"Con Leche Muffins", 'price':6}, {"code":14,"name":"Apple Pie", 'price':4}]
+
 #For machine, total, create_receipt functions
 items = []
 receipt = """
@@ -147,6 +151,27 @@ def machine(items_available, run, items):
        #If user enters x you will got to the next part
         if added_items == "x":
             run = False   
+
+    sugg = str(input('Would you like a suggestion for more items? y\\n '))
+    if sugg == 'y':
+        for a in sug_items:
+         print(f"\n[{a['code']}] Items: {a['name']} - Price: {a['price']}")
+    if sugg == 'n':
+        print("ok lets continue on with your purchase")
+    
+    while run:
+        buy_sugg = int(input('\nYou may enter the product number code of your choice: '))
+        if buy_sugg < len(sug_items):
+            items.append(sug_items[buy_sugg])
+            print('Okay, {} sounds perfect! That will be added to your bill.'.format(sug_items[buy_sugg]['name']))
+        else:
+            print("\nTHE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE\n")
+
+        added_items = str(input("Enter c to add more items or Enter x to quit: "))
+        
+        if added_items == "x":
+            run = False 
+
    #to show total price to the user
     print(dash1 + payment)
     #print(payment)
