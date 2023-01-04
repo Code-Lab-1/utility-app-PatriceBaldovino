@@ -2,7 +2,9 @@
 '''Your task is to create a Vending Machine program using the Python programming language. 
 The program should demonstrate your knowledge of programming and make use of the techniques 
 introduced over the course of the module.'''
+
 import random
+
 #Printing art & text
 title = '''
     ___       __                   _ _       
@@ -45,30 +47,27 @@ menu = '''
 \t  ))                          ((
 \t |~~|  Drinks & Snacks Menu  |~~|
 \tC|__|                        |__|]\n\n'''
-dash1 = '''-----------------------------------------------------'''
+dash1 = '''--------------------- *:･ﾟ✧ *:･ﾟ------------------------'''
 
-thankyou = '''
-   ;)( ;                ___       _            _   _ 
+thankyou = '''\n   ;)( ;                ___       _            _   _ 
   :----:     o8Oo./    | __|_ _  (_)___ _  _  | | | |
  C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
   |    |  \========/   |___|_||_|/ \___/\_, | (_) (_)
   `----'   `------\'            |__/     |__/ \n'''
-code = '''  ___                _      ___         _     
- |_ _|_ _  _ __ _  _| |_   / __|___  __| |___ 
-  | || ' \| '_ \ || |  _| | (__/ _ \/ _` / -_)
- |___|_||_| .__/\_,_|\__|  \___\___/\__,_\___|
+code = '''\n  ___                _      ___         _         _    _ 
+ |_ _|_ _  _ __ _  _| |_   / __|___  __| |___    ( `\/'*)
+  | || ' \| '_ \ || |  _| | (__/ _ \/ _` / -_)    \   */' 
+ |___|_||_| .__/\_,_|\__|  \___\___/\__,_\___|     `\/'  
           |_|                                 '''
-payment = '''
-  ___                         _   
- | _ \__ _ _  _ _ __  ___ _ _| |_ 
- |  _/ _` | || | '  \/ -_) ' \  _|
- |_| \__,_|\_, |_|_|_\___|_||_\__|
+payment = '''\n  ___                         _       _    _
+ | _ \__ _ _  _ _ __  ___ _ _| |_    ( `\/'*)
+ |  _/ _` | || | '  \/ -_) ' \  _|    \   */' 
+ |_| \__,_|\_, |_|_|_\___|_||_\__|     `\/' 
            |__/                   \n'''
-itemst = '''
-  ___ _                
- |_ _| |_ ___ _ __  ___
-  | ||  _/ -_) '  \(_-<
- |___|\__\___|_|_|_/__/
+itemst = '''\n  ___ _                     _    _
+ |_ _| |_ ___ _ __  ___    ( `\/'*)
+  | ||  _/ -_) '  \(_-<     \   */'
+ |___|\__\___|_|_|_/__/      `\/' 
                        \n'''
 
 #The list of items that are available [Dictionary]
@@ -80,8 +79,8 @@ items_available = [
     {"code": 8, "name":"Macarons", 'price':10,}, {"code": 9, "name":"Cupcake", 'price':7,} ]
 
 sug_items = [
-    {"code":10, "name":"Waffle meal", 'price':10},{"code":11, "name":"Biscuit", 'price':6},{"code":12, "name":"Sweet Bread", 'price':5},
-    {"code":13, "name":"Con Leche Muffins", 'price':6}, {"code":14,"name":"Apple Pie", 'price':4}]
+    {"code":0, "name":"Waffle meal", 'price':10},{"code":1, "name":"Biscuit", 'price':6},{"code":2, "name":"Sweet Bread", 'price':5},
+    {"code":3, "name":"Con Leche Muffins", 'price':6}, {"code":4,"name":"Apple Pie", 'price':4}]
 
 #For machine, total, create_receipt functions
 items = []
@@ -118,30 +117,27 @@ def start():
     print(title)
 #Vending Machine Art
     print(vending_machine)
-    print()
    #Introduction to Vending machine
-    print('\t   Welcome to Cafe Voila <3')
+    print('\n\t   Welcome to Cafe Voila <3')
     print('\t A cafe in a vending machine \n')
     print('Everything you can buy at a cafe is now in a machine!')
    #No specific currency ex. dollars
-    print("\tThe coffee can get a bit pricy :)")
+    print("\tThe coffee can get a bit pricy :)\n")
+   #Printing of Menu Title
+    print(dash1 + menu)
+   #Printing of Menu using a for loop
+    for i in items_available:
+        print(f"[{i['code']}] Items: {i['name']} - Price: {i['price']}\n")
+    print(dash1+code)
 start()
-#Printing of Menu Title
-print(dash1 + menu)
-#print(menu)  
-#Printing of Menu using a for loop
-for i in items_available:
-        print(f"[{i['code']}] Items: {i['name']} - Price: {i['price']}")
-        #print(f"Items: {i['name']} - Price: {i['price']} ====== Code: {i['code']}")
-        print()
-print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
-print(code)
+
 #Fuction used for adding drinks or snacks to the users items. USing while loop 
 def machine(items_available, run, items):
     while run:
        #Enter the item code here
         buy_item = int(input("\nYou may enter the product number code of your choice: "))
         if buy_item < len(items_available):
+           #To add to the empty list
             items.append(items_available[buy_item])
             print('Okay, {} sounds perfect! That will be added to your bill.'.format(items_available[buy_item]['name']))
         else:
@@ -150,31 +146,36 @@ def machine(items_available, run, items):
         added_items = str(input("Enter c to add more items or Enter x to quit: "))
        #If user enters x you will got to the next part
         if added_items == "x":
-            run = False   
-
-    sugg = str(input('Would you like a suggestion for more items? y\\n '))
+            run = False  
+   #Enter y or n 
+    sugg = str(input('\nWould you like a suggestion for more items? y\\n '))
+   #If y is entered it will show this output
     if sugg == 'y':
-        for a in sug_items:
-         print(f"\n[{a['code']}] Items: {a['name']} - Price: {a['price']}")
+       #random.choice will randomize a product as a suggestion 
+        print(dash1 + "\n\n{}\n\n".format(random.choice(sug_items)) + dash1)
+       #Ask the user if theyre interested in purchasing
+        added = str(input('Would like to purchase it? y\\n '))
+       #If user enters y it will print this
+        if added == 'y':
+            buy_sugg = int(input('\nYou may enter the product number code of your choice: '))
+            if buy_sugg < len(sug_items):
+                items.append(sug_items[buy_sugg])
+               #Will show the product name 
+                print('Okay, {} sounds perfect! That will be added to your bill.'.format(sug_items[buy_sugg]['name']))
+            else:
+                print("\nTHE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE\n")
+       #If user enters n you will got to the next part
+        if added == 'n':
+                print('ok lets continue on with your purchase\n')
+   #If user enters n you will got to the next part
     if sugg == 'n':
-        print("ok lets continue on with your purchase")
-    
-    while run:
-        buy_sugg = int(input('\nYou may enter the product number code of your choice: '))
-        if buy_sugg < len(sug_items):
-            items.append(sug_items[buy_sugg])
-            print('Okay, {} sounds perfect! That will be added to your bill.'.format(sug_items[buy_sugg]['name']))
-        else:
-            print("\nTHE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE\n")
-
-        added_items = str(input("Enter c to add more items or Enter x to quit: "))
-        
-        if added_items == "x":
-            run = False 
+        print("ok lets continue on with your purchase\n")
+    else:
+        run = False 
 
    #to show total price to the user
     print(dash1 + payment)
-    #print(payment)
+   #print(payment)
     print(f'The total price is {total(items)}')
    #Input total price or more here
     cash = int(input(("Please enter the amount of money needed: ")))
@@ -183,34 +184,24 @@ def machine(items_available, run, items):
    #If the user gives the exact amount needed it will print this
     if cash == total(items):
         print(dash1 + itemst)
-        #print(itemst)
-        print('All of the items that you have pruchased will be dispensed.')
-        print(thankyou)
-  #If the user gives more than the exact amount needed it will print this
+        print('All of the items that you have pruchased will be dispensed.\n' + thankyou)
+   #If the user gives more than the exact amount needed it will print this
     elif cash >= total(items):
         print(dash1 + itemst)
         #print(itemst)
         print('All of the items that you have pruchased will be dispensed.')
-        print(f'Here is your change: {change}')
-        print(thankyou)
-  #If the user gives less than the right amount 
+        print(f'Here is your change: {change} \n' + thankyou)
+   #If the user gives less than the right amount 
     else:
         print('Please enter the right amount of money')
         return
    #For printing of receipt and total price of your purchase
-    record = str(input(("To print the receipt please enter a: ")))
+    input("Enter to get receipt \n" + dash1)
+    print(create_receipt(items, receipt))
+    print(f'         Cash ---- {cash}')
+    print(f'         Change ---- {change}')
+    print('\n\t******** THANK YOU *******\n' + dash1)
    #Will print receipt and enjoy card
-    if record == 'a':
-        print(dash1)
-        print(create_receipt(items, receipt))
-        print(f'         Cash ---- {cash}')
-        print(f'         Change ---- {change}')
-        print('\n\t******** THANK YOU *******\n' + dash1)
-        #print(dash1)
-    #If 1 is not entered it will be invalid
-    else:
-        print("\n\t     INVALID ENTRY")
-        print('\tPlease follow instructions!')
 
 #Main for function call. It Executes Code When the File Runs as a Script.
 if __name__ == "__main__":
