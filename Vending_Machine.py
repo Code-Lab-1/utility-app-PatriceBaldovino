@@ -134,14 +134,14 @@ def machine(items_available, run, items):
         if add_ons == "x":
             run = False  
    #Enter y or n 
-    sugg = str(input('\nWould you like a suggestion for more items? y\\n '))
+    sugg = str(input('\nWould you like a suggestion for more items? \nEnter y if yes and n for no: '))
    #If y is entered it will show this output
     if sugg == 'y':
        #random.choice will randomize a product as a suggestion 
         print(dash1 + "\n\n{}\n\n".format(random.choice(sug_items)) + dash1)
         print(sugg_text)
        #Ask the user if theyre interested in purchasing
-        added = str(input('Would like to purchase it? y\\n '))
+        added = str(input('Would like to purchase it? \nEnter y if yes and n for no: '))
        #If user enters y it will print this
         if added == 'y':
             buy_sugg = int(input('\nYou may enter the product number code of your choice: '))
