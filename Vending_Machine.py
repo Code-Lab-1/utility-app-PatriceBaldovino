@@ -107,13 +107,12 @@ def start():
     print('\n\t   Welcome to Cafe Voila <3')
     print('\t A cafe in a vending machine \n')
     print('Everything you can buy at a cafe is now in a machine!')
-   #No specific currency ex. dollars
     print("\tThe coffee can get a bit pricy :)\n")
    #Printing of Menu Title
     print(dash1 + menu)
    #Printing of Menu using a for loop
     for i in items_available:
-        print(f"[{i['code']}] Items: {i['name']} - Price: {i['price']}\n")
+        print(f"[{i['code']}] Items: {i['name']} ♥ - Price: {i['price']}\n")
     print(dash1+code)
 start()
 
