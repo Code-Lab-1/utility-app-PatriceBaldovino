@@ -48,7 +48,6 @@ menu = '''
 \t |~~|  Drinks & Snacks Menu  |~~|
 \tC|__|                        |__|]\n\n'''
 dash1 = '''--------------------- *:･ﾟ✧ *:･ﾟ------------------------'''
-
 thankyou = '''\n   ;)( ;                ___       _            _   _ 
   :----:     o8Oo./    | __|_ _  (_)___ _  _  | | | |
  C|====| ._o8o8o8Oo_.  | _|| ' \ | / _ \ || | |_| |_|
@@ -59,6 +58,13 @@ code = '''\n  ___                _      ___         _         _    _
   | || ' \| '_ \ || |  _| | (__/ _ \/ _` / -_)    \   */' 
  |___|_||_| .__/\_,_|\__|  \___\___/\__,_\___|     `\/'  
           |_|                                 '''
+
+sugg_text = '''\n  ___                       _   _                  _    _
+ / __|_  _ __ _ __ _ ___ __| |_(_)___ _ _  ___    ( `\/'*)
+ \__ \ || / _` / _` / -_|_-<  _| / _ \ ' \(_-<     \   */'
+ |___/\_,_\__, \__, \___/__/\__|_\___/_||_/__/      `\/'
+          |___/|___/                          \n'''
+
 payment = '''\n  ___                         _       _    _
  | _ \__ _ _  _ _ __  ___ _ _| |_    ( `\/'*)
  |  _/ _` | || | '  \/ -_) ' \  _|    \   */' 
@@ -85,8 +91,8 @@ sug_items = [
 #For machine, total, create_receipt functions
 items = []
 receipt = """
-\t******** RECEIPT *******\n
-\t  PRODUCT --> PRICE
+\t*｡☆ ✼ ★ ━━━━━━ ｡RECEIPT｡ ━━━━━━ ★ ✼ ☆ ｡*\n
+\t          PRODUCT --> PRICE
 """
 total = 0
 run = True
@@ -94,21 +100,19 @@ run = True
 #For adding all the prices together
 def total(items):
     total = 0
-
     for i in items:
         total += i["price"]
-
     return total
 #For printing of receipt
 def create_receipt(items, receipt):
    #For receipt
     for i in items:
         receipt += f"""
-            {i["name"]} --- {i['price']}
+                    {i["name"]} --- {i['price']}
         """
    #For total receipt
     receipt += f"""
-          Total ==== {total(items)} """
+                  Total ==== {total(items)} \n"""
     return receipt
 
 #THE START OF THE MAIN CODE
@@ -135,17 +139,17 @@ start()
 def machine(items_available, run, items):
     while run:
        #Enter the item code here
-        buy_item = int(input("\nYou may enter the product number code of your choice: "))
-        if buy_item < len(items_available):
+        buy_items = int(input("\nYou may enter the product number code of your choice: "))
+        if buy_items < len(items_available):
            #To add to the empty list
-            items.append(items_available[buy_item])
-            print('Okay, {} sounds perfect! That will be added to your bill.'.format(items_available[buy_item]['name']))
+            items.append(items_available[buy_items])
+            print('Okay, {} sounds perfect! That will be added to your bill.'.format(items_available[buy_items]['name']))
         else:
             print("\nTHE PRODUCT CODE IS WRONG! PLEASE PUT THE RIGHT CODE\n")
        #If user wants to add more or end it
-        added_items = str(input("Enter c to add more items or Enter x to quit: "))
+        add_ons = str(input("Enter c to add more items or Enter x to quit: "))
        #If user enters x you will got to the next part
-        if added_items == "x":
+        if add_ons == "x":
             run = False  
    #Enter y or n 
     sugg = str(input('\nWould you like a suggestion for more items? y\\n '))
@@ -153,6 +157,7 @@ def machine(items_available, run, items):
     if sugg == 'y':
        #random.choice will randomize a product as a suggestion 
         print(dash1 + "\n\n{}\n\n".format(random.choice(sug_items)) + dash1)
+        print(sugg_text)
        #Ask the user if theyre interested in purchasing
         added = str(input('Would like to purchase it? y\\n '))
        #If user enters y it will print this
@@ -172,7 +177,6 @@ def machine(items_available, run, items):
         print("ok lets continue on with your purchase\n")
     else:
         run = False 
-
    #to show total price to the user
     print(dash1 + payment)
    #print(payment)
@@ -198,11 +202,10 @@ def machine(items_available, run, items):
    #For printing of receipt and total price of your purchase
     input("Enter to get receipt \n" + dash1)
     print(create_receipt(items, receipt))
-    print(f'         Cash ---- {cash}')
-    print(f'         Change ---- {change}')
-    print('\n\t******** THANK YOU *******\n' + dash1)
+    print(f'                 Cash ---- {cash}')
+    print(f'                 Change ---- {change}')
+    print('\n\t*｡☆ ✼ ★ ━━━━━━ ｡THANK YOU ｡ ━━━━━━ ★ ✼ ☆ ｡*\n' + dash1)
    #Will print receipt and enjoy card
-
 #Main for function call. It Executes Code When the File Runs as a Script.
 if __name__ == "__main__":
     machine(items_available, run, items)
