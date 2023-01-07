@@ -185,7 +185,6 @@ def machine(items_available, run, items):
     print(f'                 Cash ---- {cash}')
     print(f'                 Change ---- {change}')
     print('\n\t*｡☆ ✼ ★ ━━━━━━ ｡THANK YOU ｡ ━━━━━━ ★ ✼ ☆ ｡*\n\n' + dash1)
-   #Will print receipt and enjoy card
 #Main for function call. It Executes Code When the File Runs as a Script.
 if __name__ == "__main__":
     machine(items_available, run, items)
