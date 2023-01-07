@@ -82,8 +82,8 @@ run = True
 #For adding all the prices together
 def total(items):
     total = 0
-    for i in items:
-        total += i["price"]
+    for p in items:
+        total += p["price"]
     return total
 #For printing of receipt
 def create_receipt(items, receipt):
